@@ -1,7 +1,6 @@
 import pygame
 from random import randint
 
-
 #adding the time function of the pygame module to track time
 time = pygame.time.Clock()
 
@@ -66,7 +65,6 @@ ladder = pygame.mixer.Sound("ladder.wav")
 mouse = pygame.mouse.get_pos()
 click = pygame.mouse.get_pressed()
 
-
 # Message displaying for buttons
 def msg_display_scr(text,x,y,fs):
     largeText = pygame.font.SysFont('consolas',fs)
@@ -74,11 +72,9 @@ def msg_display_scr(text,x,y,fs):
     TextRect.center = (x,y)
     display.blit(TextSurf,TextRect)
 
-
 def text_obj_scr(text,font):
     textSurface = font.render(text,True,white_c)
     return textSurface, textSurface.get_recr()
-
 
 # Message displaying for field
 def msg_display1_scr(text, x, y, fs, c):
@@ -87,11 +83,9 @@ def msg_display1_scr(text, x, y, fs, c):
     TextRect.center = (x, y)
     display.blit(TextSurf, TextRect)
 
-
 def text_obj_scr(text, font, c):
     textSurface = font.render(text, True, c)
     return textSurface, textSurface.get_rect()
-
 
 #coin movement function
 def movement(a):
@@ -111,7 +105,6 @@ def movement(a):
     x = l2[0] - 25
     y = l2[1] - 25
     return x, y
-
 
 def text_objects1(text, font):
     textSurface = font.render(text, True, grey_c)
@@ -178,7 +171,6 @@ def button2(t, xm, ym, x, y, wid, hei, int, after, fast):
         pygame.draw.rect(display, int, [x, y, wid, hei])
     msg_display_scr(t, (x + wid + x) / 2, (y + hei + y) / 2, fast)
 
-
 # Buttons for playing:
 def button1(t, xm, ym, x, y, wid, hei, int, after, fast):
     # mouse position
@@ -188,11 +180,9 @@ def button1(t, xm, ym, x, y, wid, hei, int, after, fast):
         pygame.draw.rect(display, after, [x - 2.5, y - 2.5, wid + 5, hei + 5])
         if pygame.mouse.get_pressed() == (1, 0, 0):
             return True
-
     else:
         pygame.draw.rect(display, after, [x, y, wid, hei])
     msg_display_scr(t, (x + wid + x) / 2, (y + hei + y) / 2, fast)
-
 
 #function for each turn of the user
 def turn(sc, lefted, section):
@@ -231,7 +221,6 @@ def Quit():
     pygame.quit()
     quit()
 
-
 # Buttons:
 def button(t, xm, ym, x, y, wid, hei, int, after, fast, best):
     if x + wid > xm > x and y + hei > ym > y:
@@ -249,11 +238,9 @@ def button(t, xm, ym, x, y, wid, hei, int, after, fast, best):
                 choice()
             else:
                 return True
-
     else:
         pygame.draw.rect(display, after, [x, y, wid, hei])
     msg_display_scr(t, (x + wid + x) / 2, (y + hei + y) / 2, fast)
-
 
 def introduction():
     time_clock = pygame.time.get_ticks()
@@ -283,7 +270,6 @@ def introduction():
                 return
         pygame.display.update()
 
-
 def creditation():
     while True:
         display.blit(creditations1, (0, 0))
@@ -296,9 +282,7 @@ def creditation():
         click = pygame.mouse.get_pressed()
         if button("Back", mouse[0], mouse[1], scr_width / 2 - 100, 700, 200, 50, red_c2, blue_red, 25, 20):
             main_menu()
-
         pygame.display.update()
-
 
 # Main Menu
 def main_menu():
@@ -331,9 +315,7 @@ def main_menu():
             pygame.mixer.music.unpause()
         if button2("Credits", mouse[0], mouse[1], 1166, 150, 200, 50, purple_c, blue_purple, 25):
             creditation()
-
         pygame.display.update()
-
 
 # Options Menu:
 def choice():
@@ -345,7 +327,6 @@ def choice():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     Quit()
-
         # mouse position
         mouse = pygame.mouse.get_pos()
         click = pygame.mouse.get_pressed()
@@ -375,9 +356,7 @@ def choice():
             playing(3)
         if best4 == 4:
             playing(4)
-
         pygame.display.update()
-
 
 def playing(best):
     best6 = -1
